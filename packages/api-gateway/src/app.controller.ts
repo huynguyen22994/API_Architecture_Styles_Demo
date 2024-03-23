@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs'
+import { Order } from './app.interfaces';
 
 @Controller()
 export class AppController {
@@ -22,7 +23,7 @@ export class AppController {
   }
 
   @Get('/orders/rest')
-  async getOrdersByRest(): Promise<Observable<any>> {
+  async getOrdersByRest(): Promise<Order[]> {
     return await this.appService.getOrdersByRest()
   }
 }

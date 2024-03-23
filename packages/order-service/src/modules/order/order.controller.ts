@@ -16,6 +16,7 @@ export class OrderController {
 
     @Get('/orders')
     getOrders() {
-        return this.orderService.findOrders()
+        const orders = this.orderService.findOrders()
+        return { orders }
     }
 }

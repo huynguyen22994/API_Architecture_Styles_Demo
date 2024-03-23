@@ -1,8 +1,10 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios'
 import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
-import { Observable, map } from 'rxjs';
+import { Observable, map, firstValueFrom, catchError } from 'rxjs';
 import { HeroesService, Hero, Order, OrderService } from './app.interfaces'
 import { join } from 'path';
+import { AxiosError, AxiosResponse } from 'axios';
 
 @Injectable()
 export class AppService implements OnModuleInit {
@@ -17,6 +19,8 @@ export class AppService implements OnModuleInit {
 
   private heroesService: HeroesService;
   private orderService: OrderService;
+
+  constructor(private readonly httpService: HttpService){}
 
   onModuleInit() {
     this.heroesService = this.client.getService<HeroesService>('HeroesService');
@@ -36,7 +40,15 @@ export class AppService implements OnModuleInit {
     return this.orderService.findOrders({})
   }
 
-  async getOrdersByRest(): Promise<any> {
-    
+  async getOrdersByRest(): Promise<Order[]> {
+    const { data } = await firstValueFrom(
+      this.httpService.get<Order[]>('http://localhost:8002/orders').pipe(
+        catchError((error: AxiosError) => {
+          console.log(error.response.data);
+          throw 'An error happened!';
+        }),
+      ),
+    );
+    return data;
   }
 }
