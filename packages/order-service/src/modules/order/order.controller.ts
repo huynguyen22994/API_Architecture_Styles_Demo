@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common'
 import { GrpcMethod } from '@nestjs/microservices'
 import { ServerUnaryCall, Metadata } from '@grpc/grpc-js'
 import { OrderService } from './order.service'
-import { Order} from './order.interfaces'
+import { Order} from '../../common/order.interfaces'
 
 @Controller()
 export class OrderController {

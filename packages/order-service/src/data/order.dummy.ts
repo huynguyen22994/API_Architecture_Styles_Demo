@@ -1,4 +1,4 @@
-import { Order } from './order.interfaces'
+import { Order } from '../common/order.interfaces'
 
 export const orders: Order[] = [
     {

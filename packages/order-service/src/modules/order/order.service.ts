@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { orders } from './order.dummy'
+import { orders } from '../../data/order.dummy'
 
 @Injectable()
 export class OrderService {
