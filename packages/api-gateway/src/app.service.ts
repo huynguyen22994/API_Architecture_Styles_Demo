@@ -5,6 +5,8 @@ import { Observable, map, firstValueFrom, catchError } from 'rxjs';
 import { HeroesService, Hero, Order, OrderService } from './app.interfaces'
 import { join } from 'path';
 import { AxiosError, AxiosResponse } from 'axios';
+import { apolloClient } from './helper/apollo.client'
+import { gql } from '@apollo/client/core'
 
 @Injectable()
 export class AppService implements OnModuleInit {
@@ -27,15 +29,6 @@ export class AppService implements OnModuleInit {
     this.orderService = this.client.getService<OrderService>('OrderService');
   }
 
-  async getHero(): Promise<Observable<Hero>> {
-    return this.heroesService.findOne({ id: 1 }).pipe(
-      map((data: any) => {
-        data.huy = '1'
-       return data
-      })
-    )
-  }
-
   async getOrdersByGRPC(): Promise<Observable<Order>> {
     return this.orderService.findOrders({})
   }
@@ -50,5 +43,27 @@ export class AppService implements OnModuleInit {
       ),
     );
     return data;
+  }
+
+  async getOrdersByGraphQL(): Promise<Order[]> {
+   const query = gql`
+    query {
+      findOrders {
+        id
+        customerName
+      }
+    }
+   `
+   const { data } = await apolloClient.query({ query })
+   return data
+  }
+
+  async getHero(): Promise<Observable<Hero>> {
+    return this.heroesService.findOne({ id: 1 }).pipe(
+      map((data: any) => {
+        data.huy = '1'
+       return data
+      })
+    )
   }
 }

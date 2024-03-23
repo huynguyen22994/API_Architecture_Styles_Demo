@@ -26,4 +26,9 @@ export class AppController {
   async getOrdersByRest(): Promise<Order[]> {
     return await this.appService.getOrdersByRest()
   }
+
+  @Get('/orders/graphql')
+  async getOrdersByGraphQL(): Promise<Order[]> {
+    return await this.appService.getOrdersByGraphQL()
+  }
 }
