@@ -9,7 +9,9 @@
   },
   "author": "Huy Nguyen",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "autocannon": "^7.15.0"
+  },
   "devDependencies": {
     "lerna": "^8.0.0"
   }

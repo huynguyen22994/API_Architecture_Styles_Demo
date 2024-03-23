@@ -5,7 +5,8 @@ import { HeroById, Hero } from './hero'
 
 @Controller()
 export class HeroesController {
-  @GrpcMethod('HeroesService', 'FindOne')
+
+  @GrpcMethod('HeroesService', 'findOne')
   findOne(data: HeroById, metadata: Metadata, call: ServerUnaryCall<any, any>): Hero {
     const items = [
       { id: 1, name: 'John' },
