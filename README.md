@@ -17,6 +17,15 @@
 npm install
 ```
 
+Go to /packages/api-gateway
+```sh
+npm install
+```
+
+Go to /packages/order-service
+```sh
+npm install
+```
 ## Usage
 Build
 
