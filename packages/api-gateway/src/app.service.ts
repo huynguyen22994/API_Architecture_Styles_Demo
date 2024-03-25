@@ -2,7 +2,8 @@ import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios'
 import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
 import { Observable, map, firstValueFrom, catchError } from 'rxjs';
-import { HeroesService, Hero, Order, OrderService } from './app.interfaces'
+import { HeroesService, Hero } from './common/interfaces/hero.interface'
+import { Order, OrderService } from './common/interfaces/order.interface'
 import { join } from 'path';
 import { AxiosError, AxiosResponse } from 'axios';
 import { apolloClient } from './helper/apollo.client'
@@ -61,7 +62,7 @@ export class AppService implements OnModuleInit {
   async getHero(): Promise<Observable<Hero>> {
     return this.heroesService.findOne({ id: 1 }).pipe(
       map((data: any) => {
-        data.huy = '1'
+        data.extraData = 'adding extra data'
        return data
       })
     )

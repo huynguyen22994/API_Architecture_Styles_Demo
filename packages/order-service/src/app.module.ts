@@ -4,18 +4,20 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HeroesController } from './hero/heroes.controller'
-import { OrderModule } from './modules/order/order.module'
+import { OrderGRPCModule } from './modules/order-grpc/order-grpc.module'
 import { OrderGraphModule } from './modules/order-graph/order-graph.module';
+import { OrderRestModule } from './modules/order-rest/order-rest.module'
 
 @Module({
   imports: [
-    OrderModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       //playground: true,
       autoSchemaFile: true
     }),
+    OrderGRPCModule,
     OrderGraphModule,
+    OrderRestModule
   ],
   controllers: [AppController, HeroesController],
   providers: [AppService],

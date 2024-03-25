@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "lerna run start:dev --stream --parallel",
+    "build": "lerna run build --stream --parallel",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "kill:pm2": "pm2 delete all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Huy Nguyen",
