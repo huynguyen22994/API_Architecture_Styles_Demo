@@ -1,5 +1,5 @@
 {
-  "name": "grpc-demo",
+  "name": "api-architecture-styles-demo",
   "version": "1.0.0",
   "description": "Demo and implement gRPC, GraphQL and Rest in Microservices Architecture",
   "main": "index.js",
@@ -13,7 +13,8 @@
   "author": "Huy Nguyen",
   "license": "ISC",
   "dependencies": {
-    "autocannon": "^7.15.0"
+    "autocannon": "^7.15.0",
+    "readme-md-generator": "^1.0.0"
   },
   "devDependencies": {
     "lerna": "^8.0.0"
