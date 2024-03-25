@@ -27,15 +27,14 @@ Go to /packages/order-service
 npm install
 ```
 ## Usage
-Build
-
+Run with nest: at root folder
 ```sh
-npm run build
+npm run dev
 ```
 
-Start
-
+Run with pm2: at root folder
 ```sh
+npm run build
 npm run start:pm2
 ```
 
