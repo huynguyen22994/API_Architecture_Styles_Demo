@@ -1,0 +1,4 @@
+@url_api_dev = http://localhost:8000
+
+### GraphQL
+GET {{url_api_dev}}/orders/graphql

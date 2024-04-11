@@ -15,7 +15,7 @@ export class AppService implements OnModuleInit {
     transport: Transport.GRPC,
     options: {
       package: ['hero', 'order'],
-      protoPath: [join(__dirname, '../protos/hero.proto'), join(__dirname, '../protos/order.proto')]
+      protoPath: [join(__dirname, './protos/hero.proto'), join(__dirname, './protos/order.proto')]
     },
   })
   client: ClientGrpc;

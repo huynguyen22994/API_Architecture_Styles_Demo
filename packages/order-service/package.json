@@ -17,7 +17,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "yarn typeorm migration:generate -d src/core/database/data-source.ts",
+    "migration:create": "yarn typeorm migration:create",
+    "migration:run": "yarn typeorm migration:run -d src/core/database/data-source.ts",
+    "migration:revert": "yarn typeorm migration:revert -d src/core/database/data-source.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.10.2",
@@ -29,10 +34,13 @@
     "@nestjs/graphql": "^12.1.1",
     "@nestjs/microservices": "^10.3.5",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/typeorm": "^10.0.2",
     "graphql": "^16.8.1",
     "graphql-tools": "^9.0.1",
+    "pg": "^8.11.5",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

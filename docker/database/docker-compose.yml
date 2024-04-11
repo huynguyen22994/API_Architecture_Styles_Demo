@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgresdb:
+    container_name: blm-demo-postgresdb
+    image: postgres:latest
+    ports:
+      - "${DB_PORT_EXPOSE}:${DB_PORT}"
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DATABASE=${DB_NAME}
+    volumes:
+      - "blm-demo-db:/data/blm-demo-db"
+    restart: on-failure
+
+volumes:
+  blm-demo-db:

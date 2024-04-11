@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package order2;
+
+service OrderServiceV2 {
+  rpc findOrders (Empty) returns (OrderListV2) {}
+}
+
+message Empty {}
+
+message OrderV2 {
+  int32 id = 1;
+  string customerName = 2;
+  string customerAddress = 3;
+  string customerPhone = 4;
+  int32 orderPrice = 5;
+  string orderStatus = 6;
+}
+
+message OrderListV2 {
+  repeated OrderV2 orders = 1;
+}
