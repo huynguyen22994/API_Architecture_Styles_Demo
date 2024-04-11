@@ -4,10 +4,15 @@ import "google/protobuf/empty.proto";
 package order2;
 
 service OrderServiceV2 {
-  rpc findOrders (Empty) returns (OrderListV2) {}
+  rpc findOrders (Empty) returns (OrderListV2) {};
+  rpc findOrderByCustomerName(FindOneParams) returns (OrderV2) {}
 }
 
 message Empty {}
+
+message FindOneParams {
+  string customerName = 1;
+}
 
 message OrderV2 {
   int32 id = 1;

@@ -26,4 +26,10 @@ export class OrderResolver {
             country: 'Việt Nam'
         }
     }
+
+    @Query(returns => OrderType)
+    async findUserByCustomerName(@Args('customerName', { type: () => String }) customerName: string) {
+        const result = await this.orderServices.getOrderByCustomerName(customerName)
+        return result
+    }
 }

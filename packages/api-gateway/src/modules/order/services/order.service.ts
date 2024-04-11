@@ -24,8 +24,13 @@ export class OrderServices implements OnModuleInit {
         this.orderServiceV2 = this.client.getService<OrderServiceV2>('OrderServiceV2')
     }
 
-    async getOrderList(): Promise<any> {
+    async getOrderList(): Promise<OrderV2[]> {
       const { orders } = await firstValueFrom(this.orderServiceV2.findOrders({}).pipe())
       return orders
+    }
+
+    async getOrderByCustomerName(customerName: string): Promise<OrderV2> {
+      const result = await firstValueFrom(this.orderServiceV2.findOrderByCustomerName({ customerName: customerName }).pipe())
+      return result
     }
 }

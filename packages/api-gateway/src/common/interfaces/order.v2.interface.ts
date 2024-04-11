@@ -2,8 +2,13 @@ import { Observable } from "rxjs";
 
 type Empty = {}
 
+type FindOneParams = {
+    customerName: string
+}
+
 export interface OrderServiceV2 {
     findOrders(Empty: Empty): Observable<OrderListV2>;
+    findOrderByCustomerName(FindOneParams: FindOneParams): Observable<OrderV2>
 }
 
 export interface OrderV2 {
@@ -16,5 +21,5 @@ export interface OrderV2 {
 }
 
 export interface OrderListV2 {
-    orders: OrderListV2[]
+    orders: OrderV2[]
 }

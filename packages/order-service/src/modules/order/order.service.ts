@@ -13,4 +13,12 @@ export class OrderV2Service {
     findOrders(): Promise<OrderEntity[]> {
         return this.usersRepository.find()
     }
+
+    async findOrderByCustomerName(customerName: string): Promise<OrderEntity>  {
+        return await this.usersRepository.findOne({
+            where: {
+                customerName: customerName
+            }
+        })
+    }
 }
