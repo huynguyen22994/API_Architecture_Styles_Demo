@@ -20,4 +20,18 @@ export class OrderV2Controller {
         const order = await this.orderV2Service.findOrderByCustomerName(customerName)
         return order
     }
+
+    @GrpcMethod('OrderServiceV2', 'createOrder')
+    async createOrder(data: any, metadata: Metadata, call: ServerUnaryCall<any, any>): Promise<OrderV2> {
+        const { customerName, customerAddress, customerPhone, orderPrice, orderStatus } = data
+        const order = await this.orderV2Service.createOrder({
+            customerName,
+            customerAddress,
+            customerPhone,
+            orderPrice,
+            orderStatus
+        })
+        console.log('res data:::', order)
+        return order
+    }
 }

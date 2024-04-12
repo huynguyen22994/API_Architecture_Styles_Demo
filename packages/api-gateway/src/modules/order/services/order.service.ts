@@ -33,4 +33,9 @@ export class OrderServices implements OnModuleInit {
       const result = await firstValueFrom(this.orderServiceV2.findOrderByCustomerName({ customerName: customerName }).pipe())
       return result
     }
+
+    async createOrder(order: OrderV2): Promise<OrderV2> {
+      const result = await firstValueFrom(this.orderServiceV2.createOrder(order).pipe())
+      return result
+    }
 }
