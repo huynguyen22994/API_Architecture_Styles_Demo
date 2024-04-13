@@ -19,6 +19,7 @@ export interface OrderV2 {
     customerPhone: string;
     orderPrice: number;
     orderStatus: string;
+    createdAt?: Date
 }
 
 export interface OrderListV2 {

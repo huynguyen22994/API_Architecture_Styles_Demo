@@ -20,4 +20,7 @@ export class OrderType {
     @Field(type => String)
     orderStatus: string;
 
+    @Field()
+    createdAt: Date
+
 }

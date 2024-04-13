@@ -22,6 +22,12 @@ export class OrderResolver {
         return result
     }
 
+    @Query(returns => OrderType)
+    async findOrderByCreatedDate(@Args('date', { type: () => Date }) date: Date) {
+        const result = await this.orderServices.getOrderByCustomerName("Customer 2")
+        return result
+    }
+
     @Mutation(returns => OrderType)
     async createOrder(@Args('order') orderData: OrderTypeInput) {
         const result = await this.orderServices.createOrder(orderData)

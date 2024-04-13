@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { HttpModule } from '@nestjs/axios'
+import { DateScalar } from './common/scalars/date.scalar'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { OrderModule } from './modules/order/order.module'
@@ -18,6 +19,6 @@ import { OrderModule } from './modules/order/order.module'
     OrderModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DateScalar],
 })
 export class AppModule {}
