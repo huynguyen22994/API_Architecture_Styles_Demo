@@ -1,6 +1,9 @@
 import { Field, ID, Int, ObjectType } from "@nestjs/graphql";
+import { OrderBaseType } from "../../../common/scalars/order.interface.type"
 
-@ObjectType('Order')
+@ObjectType('Order', {
+    implements: () => [OrderBaseType]
+})
 export class OrderType {
     @Field(type => Int, { nullable: true, description: "ID of a User" })
     id: number;
@@ -19,8 +22,5 @@ export class OrderType {
 
     @Field(type => String)
     orderStatus: string;
-
-    @Field()
-    createdAt: Date
 
 }
